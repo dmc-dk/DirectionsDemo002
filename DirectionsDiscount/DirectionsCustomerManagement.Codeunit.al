@@ -5,6 +5,7 @@ codeunit 50141 DirectionsCustomerManagement
     var
         ConfirmInvoicePctLbl: Label 'Directions participants have a recommended discount of 20%. Current discount is calculated at %1.';
     begin
+        //New comment
         if SalesHeader."Sell-to IsDirectionsPart." then
             if (SalesHeader."Invoice Discount Value" < 20) then
                 Message(ConfirmInvoicePctLbl, Round(SalesHeader."Invoice Discount Value"));
@@ -13,6 +14,7 @@ codeunit 50141 DirectionsCustomerManagement
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", OnAfterCopySellToCustomerAddressFieldsFromCustomer, '', false, false)]
     local procedure "Sales Header_OnAfterCopySellToCustomerAddressFieldsFromCustomer"(var SalesHeader: Record "Sales Header"; SellToCustomer: Record Customer; CurrentFieldNo: Integer; var SkipBillToContact: Boolean; var SkipSellToContact: Boolean)
     begin
+        //new comment one!
         SalesHeader."Sell-to IsDirectionsPart." := SellToCustomer.IsDirection2024Customer;
     end;
 
